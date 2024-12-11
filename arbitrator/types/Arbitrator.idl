@@ -1,0 +1,34 @@
+/* Copyright(c) 2024 Guerbet
+ * SPDX-License-Identifier: Closed
+*/
+
+@extensibility(APPENDABLE)
+enum InjectionControllerType {
+    UNKNOWN,
+    POWERHEAD,
+    CONSOLE,
+	SCANNER_INTERFACE
+};
+
+@extensibility(APPENDABLE)
+struct OwnershipRequestType
+{
+    @key string client_id;
+	InjectionControllerType requester_type;
+	unsigned long current_strength;
+};
+
+@extensibility(APPENDABLE)
+struct OwnershipReplyType
+{
+    @key string client_id;
+	boolean ownership_allowed;
+	unsigned long strength;
+};
+
+@extensibility(APPENDABLE)
+struct CurrentOwnershipStateType
+{
+    InjectionControllerType requester_type;
+    unsigned long current_strength;
+};
